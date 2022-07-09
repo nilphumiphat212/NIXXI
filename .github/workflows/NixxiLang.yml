@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build-:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
-    - name: Build execute file
+    - name: Build for linux
       working-directory: ./Language/NixxiLang
       run: go build -o NixxiLang
+    - name: Add to repo
+      run: git add . && git commit -m "[NixxiLang][GitActions] Add new execute file from build" && git push
