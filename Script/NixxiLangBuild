@@ -2,6 +2,8 @@
 
 VERSION="0.0.1-dev"
 
+BUILD_DIR=../../Release/NixxiLang/$VERSION
+
 git config --global user.email "nilphumiphat@outlook.co.th"
 git config --global user.name "nilphumiphat212"
 
@@ -9,23 +11,23 @@ cd ./Language/NixxiLang
 echo "Build for linux"
 export GOOS=linux
 export GOARCH=386
-go build -o ../../Release/$VERSION/NixxiLangLinux
+go build -o $BUILD_DIR/NixxiLangLinux
 echo "Build success..."
 
 echo "Build for Windows"
 export GOOS=Windows
 export GOARCH=386
-go build -o ../../Release/$VERSION/NixxiLangWindows.exe
+go build -o $BUILD_DIR/NixxiLangWindows.exe
 echo "Build success..."
 
 echo "Build for MaCOS"
 export GOOS=darwin
 export GOARCH=386
-go build -o ../../Release/$VERSION/NixxiLangMacOS.exe
+go build -o $BUILD_DIR/NixxiLangMacOS.exe
 echo "Build success..."
 
 echo "Push fils to release folder"
-git add ../../Release/$VERSION
+git add $BUILD_DIR
 git commit -m "[NixxiLang][GitActions] Add new files from build"
 git pull
 git push
