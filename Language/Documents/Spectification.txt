@@ -1,0 +1,5 @@
+Nixxi Langauge Spectification
+    - keywords
+        -- "var" define a immutable variable
+        -- "mut" mark variable to mutable
+        -- "if", "else", "elif", "short if (? :)" control flow of boolean value
