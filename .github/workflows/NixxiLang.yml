@@ -17,8 +17,5 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
-    - name: Build for linux
-      working-directory: ./Language/NixxiLang
-      run: go build -o NixxiLang
-    - name: Add to repo
-      run: git config --global user.email "nilphumiphat@outlook.co.th" && git config --global user.name "nilphumiphat212" && git add . && git commit -m "[NixxiLang][GitActions] Add new execute file from build" && git push
+    - name: Build execute files
+      run: bash ./Script/NixxiLangBuild

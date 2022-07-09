@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+VERSION="0.0.1"
+
+git config --global user.email "nilphumiphat@outlook.co.th"
+git config --global user.name "nilphumiphat212"
+
+cd ./Language/NixxiLang
+echo "Build for linux"
+export GOOS=linux
+export GOARCH=386
+go build -o ../../Release/NixxiLangLinux$VERSION
+echo "Build success..."
+
+echo "Build for Windows"
+export GOOS=Windows
+export GOARCH=386
+go build -o ../../Release/NixxiLangWindows$VERSION.exe
+echo "Build success..."
+
+echo "Build for MaCOS"
+export GOOS=darwin
+export GOARCH=386
+go build -o ../../Release/NixxiLangMacOS$VERSION.exe
+echo "Build success..."
+
+echo "Push fils to release folder"
+git add .
+git commit -m "[NixxiLang][GitActions] Add new files from build"
+git push
