@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  build-:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -17,3 +17,6 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
+    - name: Build execute file
+      working-directory: ./Language/NixxiLang
+      run: go build -o NixxiLang
