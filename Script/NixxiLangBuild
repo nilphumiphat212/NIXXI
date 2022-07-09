@@ -26,7 +26,7 @@ export GOARCH=386
 go build -o $BUILD_DIR/NixxiLangMacOS.exe
 echo "Build success..."
 
-echo "Push fils to release folder"
+echo "Push files to release folder"
 git add $BUILD_DIR
 git commit -m "[NixxiLang][GitActions] Add new files from build"
 git pull
