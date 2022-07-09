@@ -27,4 +27,5 @@ echo "Build success..."
 echo "Push fils to release folder"
 git add ../../Release/$VERSION
 git commit -m "[NixxiLang][GitActions] Add new files from build"
+git pull
 git push
