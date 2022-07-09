@@ -15,14 +15,14 @@ go build -o $BUILD_DIR/NixxiLangLinux
 echo "Build success..."
 
 echo "Build for Windows"
-export GOOS=Windows
-export GOARCH=386
+export GOOS=windows
+export GOARCH=amd64
 go build -o $BUILD_DIR/NixxiLangWindows.exe
 echo "Build success..."
 
 echo "Build for MaCOS"
 export GOOS=darwin
-export GOARCH=386
+export GOARCH=amd64
 go build -o $BUILD_DIR/NixxiLangMacOS.exe
 echo "Build success..."
 
