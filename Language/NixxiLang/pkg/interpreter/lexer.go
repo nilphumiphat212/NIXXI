@@ -28,9 +28,30 @@ func isKeyword(text string) (bool, Keyword) {
 	return false, KEYWORD_UNKNOW
 }
 
-func toToken(textLine string) (Token, error) {
-	// mock := "a = 1"
-	return Token{Type: TOKEN_KEYWORD, Value: "null"}, nil
+func getWordingsOfTextLine(textLine string) []string {
+	var wordings []string
+	var wording string = ""
+	for _, char := range textLine + " " {
+		var ch string = string(char)
+		if ch != " " && ch != "\t" {
+			wording = wording + ch
+		} else {
+			if wording != "" {
+				wordings = append(wordings, wording)
+			}
+			wording = ""
+		}
+	}
+	return wordings
+}
+
+func toToken(text string) (Token, error) {
+	isKeyword, keyword := isKeyword(text)
+	if isKeyword {
+		return Token{Type: TOKEN_KEYWORD, Value: TokenValue(keyword)}, nil
+	}
+
+	return Token{Type: TOKEN_UNKNOW, Value: TokenValue(text)}, nil
 }
 
 func Lexer(filePath string) ([]Token, error) {
@@ -47,11 +68,13 @@ func Lexer(filePath string) ([]Token, error) {
 	var scanner *bufio.Scanner = bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		token, err := toToken(scanner.Text())
-		if err != nil {
-			log.Fatal(err)
+		for _, wording := range getWordingsOfTextLine(scanner.Text()) {
+			token, err := toToken(wording)
+			if err != nil {
+				log.Fatal(err)
+			}
+			tokens = append(tokens, token)
 		}
-		tokens = append(tokens, token)
 	}
 
 	return tokens, nil

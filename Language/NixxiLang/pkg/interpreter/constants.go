@@ -35,6 +35,7 @@ const (
 )
 
 const (
+	TOKEN_UNKNOW   TokenType = "UNKNOW"
 	TOKEN_KEYWORD  TokenType = "KEYWORD"
 	TOKEN_OPARATOR TokenType = "OPARATOR"
 	TOKEN_STRING   TokenType = "STRING"
