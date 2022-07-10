@@ -7,24 +7,32 @@ BUILD_DIR=../../Release/NixxiLang/$VERSION
 git config --global user.email "nilphumiphat@outlook.co.th"
 git config --global user.name "nilphumiphat212"
 
+build() {
+    echo "=========================== Build execute file ==========================="
+    local os=$1
+    local arch=$2
+    local build_path="$BUILD_DIR/$os/nixxilang"
+
+    export GOOS=$os
+    export GOARCH=$arch
+
+    echo "OS: $GOOS"
+    echo "Architecture: $GOARCH"    
+    
+    if [ $os = "windows" ]; then
+        go build -o $build_path.exe
+        echo "Build success file save to $build_path.exe"
+    else
+        go build -o $build_path
+        echo "Build success file save to $build_path"
+    fi
+}
+
 cd ./Language/NixxiLang
-echo "Build for linux"
-export GOOS=linux
-export GOARCH=386
-go build -o $BUILD_DIR/NixxiLangLinux
-echo "Build success..."
 
-echo "Build for Windows"
-export GOOS=windows
-export GOARCH=amd64
-go build -o $BUILD_DIR/NixxiLangWindows.exe
-echo "Build success..."
-
-echo "Build for MaCOS"
-export GOOS=darwin
-export GOARCH=amd64
-go build -o $BUILD_DIR/NixxiLangMacOS.exe
-echo "Build success..."
+build windows amd64
+build linux 386
+build darwin amd64
 
 echo "Push files to release folder"
 git add $BUILD_DIR
