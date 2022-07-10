@@ -44,6 +44,8 @@ func isOperator(text string) (bool, OperatorValue) {
 		return true, OPERATOR_MULTIPLY
 	} else if text == "/" {
 		return true, OPERATOR_DIVIDE
+	} else if text == "=" {
+		return true, OPERATOR_ASSIGN
 	}
 
 	return false, OPERATOR_UNKNOW
