@@ -18,9 +18,10 @@ const (
 const (
 	VARTYPE_NULL    VarType = 0
 	VARTYPE_STRING  VarType = 1
-	VARTYPE_BOOLEAN VarType = 2
-	VARTYPE_OBJECT  VarType = 3
-	VARTYPE_ARRAY   VarType = 4
+	VARTYPE_NUMBER  VarType = 2
+	VARTYPE_BOOLEAN VarType = 3
+	VARTYPE_OBJECT  VarType = 4
+	VARTYPE_ARRAY   VarType = 5
 )
 
 const (
