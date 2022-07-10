@@ -3,13 +3,16 @@ package interpreter
 type TokenType string
 type TokenValue string
 type VarType int
+type OperatorValue string
 type Keyword string
 
 const (
-	OPARATOR_PLUS     = "PLUS"
-	OPARATOR_MINUS    = "MINUS"
-	OPARATOR_MULTIPLY = "MULTIPLY"
-	OPARATOR_DIVIDE   = "DIVIDE"
+	OPERATOR_UNKNOW   OperatorValue = "UNKNOW"
+	OPERATOR_PLUS     OperatorValue = "PLUS"
+	OPERATOR_MINUS    OperatorValue = "MINUS"
+	OPERATOR_MULTIPLY OperatorValue = "MULTIPLY"
+	OPERATOR_DIVIDE   OperatorValue = "DIVIDE"
+	OPERATOR_ASSIGN   OperatorValue = "ASSIGN"
 )
 
 const (
@@ -36,11 +39,12 @@ const (
 
 const (
 	TOKEN_UNKNOW   TokenType = "UNKNOW"
-	TOKEN_KEYWORD  TokenType = "KEYWORD"
-	TOKEN_OPARATOR TokenType = "OPARATOR"
-	TOKEN_STRING   TokenType = "STRING"
+	TOEKN_SYMBOL   TokenType = "SYMBOL"
 	TOKEN_NUMBER   TokenType = "NUMBER"
+	TOKEN_STRING   TokenType = "STRING"
 	TOKEN_BOOLEAN  TokenType = "BOOLEAN"
+	TOKEN_OPERATOR TokenType = "OPERATOR"
+	TOKEN_KEYWORD  TokenType = "KEYWORD"
 )
 
 type Token struct {

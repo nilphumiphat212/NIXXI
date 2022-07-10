@@ -8,6 +8,15 @@ import (
 	"regexp"
 )
 
+func isSymbol(text string) bool {
+	var re *regexp.Regexp = regexp.MustCompile("[a-zA-Z]+$")
+	if len(re.FindAllString(text, -1)) > 0 {
+		return true && !isString(text)
+	} else {
+		return false
+	}
+}
+
 func isNumber(text string) bool {
 	var re *regexp.Regexp = regexp.MustCompile("[0-9]+")
 	if len(re.FindAllString(text, -1)) > 0 {
@@ -19,7 +28,25 @@ func isNumber(text string) bool {
 
 func isString(text string) bool {
 	var runes []rune = []rune(text)
-	return string(runes[0:1]) == "\"" && string(runes[len(runes)-1:1]) == "\""
+	return string(runes[0]) == "\"" && string(runes[len(runes)-1]) == "\""
+}
+
+func isBoolean(text string) bool {
+	return text == "true" || text == "false"
+}
+
+func isOperator(text string) (bool, OperatorValue) {
+	if text == "+" {
+		return true, OPERATOR_PLUS
+	} else if text == "-" {
+		return true, OPERATOR_MINUS
+	} else if text == "*" {
+		return true, OPERATOR_MULTIPLY
+	} else if text == "/" {
+		return true, OPERATOR_DIVIDE
+	}
+
+	return false, OPERATOR_UNKNOW
 }
 
 func isKeyword(text string) (bool, Keyword) {
@@ -59,6 +86,10 @@ func getWordingsOfTextLine(textLine string) []string {
 }
 
 func toToken(text string) (Token, error) {
+	if isSymbol(text) {
+		return Token{TOEKN_SYMBOL, TokenValue(text)}, nil
+	}
+
 	if isNumber(text) {
 		return Token{TOKEN_NUMBER, TokenValue(text)}, nil
 	}
@@ -67,12 +98,21 @@ func toToken(text string) (Token, error) {
 		return Token{TOKEN_STRING, TokenValue(text)}, nil
 	}
 
+	if isBoolean(text) {
+		return Token{TOKEN_BOOLEAN, TokenValue(text)}, nil
+	}
+
+	isOperator, operator := isOperator(text)
+	if isOperator {
+		return Token{TOKEN_OPERATOR, TokenValue(operator)}, nil
+	}
+
 	isKeyword, keyword := isKeyword(text)
 	if isKeyword {
 		return Token{TOKEN_KEYWORD, TokenValue(keyword)}, nil
 	}
 
-	return Token{TOKEN_UNKNOW, TokenValue(text)}, nil
+	return Token{TOKEN_UNKNOW, TokenValue(text)}, errors.New("unexpected token")
 }
 
 func Lexer(filePath string) ([]Token, error) {
