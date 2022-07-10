@@ -5,9 +5,22 @@ import (
 	"errors"
 	"log"
 	"os"
+	"regexp"
 )
 
-const _NUMBERDIGIT = "0123456789"
+func isNumber(text string) bool {
+	var re *regexp.Regexp = regexp.MustCompile("[0-9]+")
+	if len(re.FindAllString(text, -1)) > 0 {
+		return true
+	} else {
+		return false
+	}
+}
+
+func isString(text string) bool {
+	var runes []rune = []rune(text)
+	return string(runes[0:1]) == "\"" && string(runes[len(runes)-1:1]) == "\""
+}
 
 func isKeyword(text string) (bool, Keyword) {
 	var allKeywords []string = []string{
@@ -46,12 +59,20 @@ func getWordingsOfTextLine(textLine string) []string {
 }
 
 func toToken(text string) (Token, error) {
-	isKeyword, keyword := isKeyword(text)
-	if isKeyword {
-		return Token{Type: TOKEN_KEYWORD, Value: TokenValue(keyword)}, nil
+	if isNumber(text) {
+		return Token{TOKEN_NUMBER, TokenValue(text)}, nil
 	}
 
-	return Token{Type: TOKEN_UNKNOW, Value: TokenValue(text)}, nil
+	if isString(text) {
+		return Token{TOKEN_STRING, TokenValue(text)}, nil
+	}
+
+	isKeyword, keyword := isKeyword(text)
+	if isKeyword {
+		return Token{TOKEN_KEYWORD, TokenValue(keyword)}, nil
+	}
+
+	return Token{TOKEN_UNKNOW, TokenValue(text)}, nil
 }
 
 func Lexer(filePath string) ([]Token, error) {
