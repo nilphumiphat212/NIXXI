@@ -11,7 +11,11 @@ import (
 func isSymbol(text string) bool {
 	var re *regexp.Regexp = regexp.MustCompile("[a-zA-Z]+$")
 	if len(re.FindAllString(text, -1)) > 0 {
-		return true && !isString(text)
+		isKeywordCheck, _ := isKeyword(text)
+		if isKeywordCheck {
+			return false
+		}
+		return true && !isString(text) && !isBoolean(text)
 	} else {
 		return false
 	}
