@@ -23,6 +23,9 @@ build() {
     if [ $os = "windows" ]; then
         go build -o $build_path.exe
         echo "Build success file save to $build_path.exe"
+    elif [ $os = "js" ]; then
+        go build -o $build_path.wasm
+        echo "Build success file save to $build_path.wasm"
     else
         go build -o $build_path
         echo "Build success file save to $build_path"
@@ -35,7 +38,7 @@ build windows amd64
 build linux 386
 build linux arm64 _arm64
 build darwin amd64
-build darwin arm64 _siilicon
+build darwin arm64 _sillicon
 # build android arm _arm
 build android arm64 _arm64
 # build ios arm _arm
