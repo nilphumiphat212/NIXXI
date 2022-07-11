@@ -2,6 +2,7 @@ package interpreter
 
 import (
 	"NixxiLang/pkg/util"
+	"bufio"
 	"fmt"
 	"log"
 	"os"
@@ -16,6 +17,23 @@ func NewInterpreter() {
 		}
 		util.WriteJsonFile("language_token.json", tokens)
 	} else {
-		fmt.Println("Interactive runtime comming soon")
+		interactiveInterpreter()
+	}
+}
+
+func interactiveInterpreter() {
+	var reader *bufio.Reader = bufio.NewReader(os.Stdin)
+	for {
+		fmt.Print("Nixxi : ")
+		text, err := reader.ReadString('\n')
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Println(text)
+		token, err := convertTextLineToTokan(text)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Println(token)
 	}
 }
