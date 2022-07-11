@@ -11,7 +11,8 @@ build() {
     echo "=========================== Build execute file ==========================="
     local os=$1
     local arch=$2
-    local build_path="$BUILD_DIR/$os/nixxilang"
+    local suffix=$3
+    local build_path="$BUILD_DIR/$os/nixxilang$suffix"
 
     export GOOS=$os
     export GOARCH=$arch
@@ -32,7 +33,11 @@ cd ./Language/NixxiLang
 
 build windows amd64
 build linux 386
+build linux arm64 _arm64
 build darwin amd64
+build darwin arm64 _siilicon
+build android arm64
+build js wasm
 
 echo "Push files to release folder"
 git add $BUILD_DIR

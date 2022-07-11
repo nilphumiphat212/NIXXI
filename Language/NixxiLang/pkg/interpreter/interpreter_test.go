@@ -6,11 +6,16 @@ import (
 )
 
 func TestNewInterpreter(t *testing.T) {
-	os.Args = []string{"main.go", "../../test.nixxi"}
+	createMockFileErr := os.WriteFile("test.nixxi", []byte("var year = 2022"), 0644)
+	if createMockFileErr != nil {
+		t.Error("Mock file not create")
+	}
+	os.Args = []string{"main.go", "test.nixxi"}
 	err := NewInterpreter()
 	if err != nil {
 		t.Error("Can not get command line arguments")
 	}
+	os.Remove("test.nixxi")
 	os.Remove("language_token.json")
 
 	// TODO: can not mock Stdin

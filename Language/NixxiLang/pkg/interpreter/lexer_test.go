@@ -1,6 +1,9 @@
 package interpreter
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 func TestIsSymbol(t *testing.T) {
 	symbol := isSymbol("nil")
@@ -197,8 +200,13 @@ func TestLoadToLexerFromFile(t *testing.T) {
 		t.Error("Can not detect empty source path")
 	}
 
-	tokens2, err2 := LoadToLexerFromFile("../../test.nixxi")
+	createMockFileErr := os.WriteFile("test.nixxi", []byte("var year = 2022"), 0644)
+	if createMockFileErr != nil {
+		t.Error("Mock file not create")
+	}
+	tokens2, err2 := LoadToLexerFromFile("test.nixxi")
 	if err2 != nil || tokens2 == nil {
 		t.Error("Can not pass source file with convert to token array")
 	}
+	os.Remove("test.nixxi")
 }
