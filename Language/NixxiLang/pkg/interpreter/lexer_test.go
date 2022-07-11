@@ -69,6 +69,36 @@ func TestCanFilterOperator(t *testing.T) {
 	if !isAssign || assign != OPERATOR_ASSIGN {
 		t.Error("Can not filter 'Assign' operator")
 	}
+
+	isEqual, equal := isOperator("==")
+	if !isEqual || equal != OPERATOR_EQUAL {
+		t.Error("Can not filter 'Equal' operator")
+	}
+
+	isNotEqual, notequal := isOperator("!=")
+	if !isNotEqual || notequal != OPERATOR_NOT_EQUAL {
+		t.Error("Can not filter 'Not Equal' operator")
+	}
+
+	isMorethan, morethan := isOperator(">")
+	if !isMorethan || morethan != OPERATOR_MORETHAN {
+		t.Error("Can not filter 'Morethan' operator")
+	}
+
+	isLess, less := isOperator("<")
+	if !isLess || less != OPERATOR_LESS {
+		t.Error("Can not filter 'Less' operator")
+	}
+
+	isMorethanOrEqual, morethanOrEqual := isOperator(">=")
+	if !isMorethanOrEqual || morethanOrEqual != OPERATOR_MORETHAN_OR_EQUAL {
+		t.Error("Can not filter 'Morehan or Equal' operator")
+	}
+
+	isLessnOrEqual, lessOrEqual := isOperator("<=")
+	if !isLessnOrEqual || lessOrEqual != OPERATOR_LESS_OR_EQUAL {
+		t.Error("Can not filter 'Less or Equal' operator")
+	}
 }
 
 func TestIsKeywordCanfilterWithString(t *testing.T) {

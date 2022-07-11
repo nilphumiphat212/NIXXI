@@ -49,8 +49,19 @@ func isOperator(text string) (bool, OperatorValue) {
 		return true, OPERATOR_DIVIDE
 	} else if text == "=" {
 		return true, OPERATOR_ASSIGN
+	} else if text == "==" {
+		return true, OPERATOR_EQUAL
+	} else if text == "!=" {
+		return true, OPERATOR_NOT_EQUAL
+	} else if text == ">" {
+		return true, OPERATOR_MORETHAN
+	} else if text == "<" {
+		return true, OPERATOR_LESS
+	} else if text == ">=" {
+		return true, OPERATOR_MORETHAN_OR_EQUAL
+	} else if text == "<=" {
+		return true, OPERATOR_LESS_OR_EQUAL
 	}
-
 	return false, OPERATOR_UNKNOW
 }
 
