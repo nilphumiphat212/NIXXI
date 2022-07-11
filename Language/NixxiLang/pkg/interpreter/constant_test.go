@@ -32,6 +32,36 @@ func TestOperatorConstant(t *testing.T) {
 	if assign != "ASSIGN" {
 		t.Error("'ASSIGN' is expected")
 	}
+
+	equal := string(OPERATOR_EQUAL)
+	if equal != "EQUAL" {
+		t.Error("'EQUAL' is expected")
+	}
+
+	notEqual := string(OPERATOR_NOT_EQUAL)
+	if notEqual != "NOT_EQUAL" {
+		t.Error("'NOT_EQUAL' is expected")
+	}
+
+	morethan := string(OPERATOR_MORETHAN)
+	if morethan != "MORETHAN" {
+		t.Error("'MORETHAN' is expected")
+	}
+
+	less := string(OPERATOR_LESS)
+	if less != "LESS" {
+		t.Error("'LESS' is expected")
+	}
+
+	morethanOrEqual := string(OPERATOR_MORETHAN_OR_EQUAL)
+	if morethanOrEqual != "MORETHAN_OR_EQUAL" {
+		t.Error("'MORETHAN_OR_EQUAL' is expected")
+	}
+
+	lessOrEqual := string(OPERATOR_LESS_OR_EQUAL)
+	if lessOrEqual != "LESS_OR_EQUAL" {
+		t.Error("'LESS_OR_EQUAL' is expected")
+	}
 }
 
 func TestVarTypeConstant(t *testing.T) {

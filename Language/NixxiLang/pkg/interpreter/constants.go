@@ -7,12 +7,18 @@ type OperatorValue string
 type Keyword string
 
 const (
-	OPERATOR_UNKNOW   OperatorValue = "UNKNOW"
-	OPERATOR_PLUS     OperatorValue = "PLUS"
-	OPERATOR_MINUS    OperatorValue = "MINUS"
-	OPERATOR_MULTIPLY OperatorValue = "MULTIPLY"
-	OPERATOR_DIVIDE   OperatorValue = "DIVIDE"
-	OPERATOR_ASSIGN   OperatorValue = "ASSIGN"
+	OPERATOR_UNKNOW            OperatorValue = "UNKNOW"
+	OPERATOR_PLUS              OperatorValue = "PLUS"
+	OPERATOR_MINUS             OperatorValue = "MINUS"
+	OPERATOR_MULTIPLY          OperatorValue = "MULTIPLY"
+	OPERATOR_DIVIDE            OperatorValue = "DIVIDE"
+	OPERATOR_ASSIGN            OperatorValue = "ASSIGN"
+	OPERATOR_EQUAL             OperatorValue = "EQUAL"
+	OPERATOR_NOT_EQUAL         OperatorValue = "NOT_EQUAL"
+	OPERATOR_MORETHAN          OperatorValue = "MORETHAN"
+	OPERATOR_LESS              OperatorValue = "LESS"
+	OPERATOR_MORETHAN_OR_EQUAL OperatorValue = "MORETHAN_OR_EQUAL"
+	OPERATOR_LESS_OR_EQUAL     OperatorValue = "LESS_OR_EQUAL"
 )
 
 const (
