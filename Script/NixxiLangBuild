@@ -36,7 +36,10 @@ build linux 386
 build linux arm64 _arm64
 build darwin amd64
 build darwin arm64 _siilicon
-build android arm64
+build android arm _arm
+build android arm64 _arm64
+build ios arm _arm
+build ios arm64 _arm64
 build js wasm
 
 echo "Push files to release folder"
