@@ -22,14 +22,12 @@ func NewInterpreter() {
 }
 
 func interactiveInterpreter() {
-	var reader *bufio.Reader = bufio.NewReader(os.Stdin)
+	var scanner *bufio.Scanner = bufio.NewScanner(os.Stdin)
 	for {
+		var text string
 		fmt.Print("Nixxi : ")
-		text, err := reader.ReadString('\n')
-		if err != nil {
-			log.Fatalln(err)
-		}
-		fmt.Println(text)
+		scanner.Scan()
+		text = scanner.Text()
 		token, err := convertTextLineToTokan(text)
 		if err != nil {
 			log.Fatalln(err)
