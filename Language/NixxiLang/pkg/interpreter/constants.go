@@ -49,6 +49,6 @@ const (
 )
 
 type Token struct {
-	Type  TokenType
-	Value TokenValue
+	Type  TokenType  `json:"type"`
+	Value TokenValue `json:"value"`
 }

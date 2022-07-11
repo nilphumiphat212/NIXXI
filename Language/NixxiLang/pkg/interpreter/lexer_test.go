@@ -161,13 +161,13 @@ func TestCanFilterToken(t *testing.T) {
 	}
 }
 
-func TestLexer(t *testing.T) {
-	tokens, err := Lexer("")
+func TestLoadToLexerFromFile(t *testing.T) {
+	tokens, err := LoadToLexerFromFile("")
 	if err == nil || tokens != nil {
 		t.Error("Can not detect empty source path")
 	}
 
-	tokens2, err2 := Lexer("../../test.nixxi")
+	tokens2, err2 := LoadToLexerFromFile("../../test.nixxi")
 	if err2 != nil || tokens2 == nil {
 		t.Error("Can not pass source file with convert to token array")
 	}

@@ -3,7 +3,6 @@ package interpreter
 import (
 	"bufio"
 	"errors"
-	"log"
 	"os"
 	"regexp"
 )
@@ -121,7 +120,19 @@ func toToken(text string) (Token, error) {
 	return Token{TOKEN_UNKNOW, TokenValue(text)}, errors.New("unexpected token")
 }
 
-func Lexer(filePath string) ([]Token, error) {
+func convertTextLineToTokan(textLine string) ([]Token, error) {
+	var tokens []Token
+	for _, wording := range getWordingsOfTextLine(textLine) {
+		token, err := toToken(wording)
+		if err != nil {
+			return nil, err
+		}
+		tokens = append(tokens, token)
+	}
+	return tokens, nil
+}
+
+func LoadToLexerFromFile(filePath string) ([]Token, error) {
 	var tokens []Token
 
 	file, err := os.Open(filePath)
@@ -135,13 +146,11 @@ func Lexer(filePath string) ([]Token, error) {
 	var scanner *bufio.Scanner = bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		for _, wording := range getWordingsOfTextLine(scanner.Text()) {
-			token, err := toToken(wording)
-			if err != nil {
-				log.Fatal(err)
-			}
-			tokens = append(tokens, token)
+		tokenAppend, err := convertTextLineToTokan(scanner.Text())
+		if err != nil {
+			return nil, err
 		}
+		tokens = append(tokens, tokenAppend...)
 	}
 
 	return tokens, nil
