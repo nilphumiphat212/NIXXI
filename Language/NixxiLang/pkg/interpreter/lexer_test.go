@@ -102,6 +102,16 @@ func TestCanFilterOperator(t *testing.T) {
 	if !isLessnOrEqual || lessOrEqual != OPERATOR_LESS_OR_EQUAL {
 		t.Error("Can not filter 'Less or Equal' operator")
 	}
+
+	isOpenBracket, openBracket := isOperator("(")
+	if !isOpenBracket || openBracket != OPERATOR_OPEN_BRACKET {
+		t.Error("Can not filter 'Open Bracket or Equal' operator")
+	}
+
+	isCloseBracket, closeBracket := isOperator(")")
+	if !isCloseBracket || closeBracket != OPERATOR_CLOSE_BRACKET {
+		t.Error("Can not filter 'Close Bracket or Equal' operator")
+	}
 }
 
 func TestIsKeywordCanfilterWithString(t *testing.T) {

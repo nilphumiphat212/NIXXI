@@ -62,6 +62,16 @@ func TestOperatorConstant(t *testing.T) {
 	if lessOrEqual != "LESS_OR_EQUAL" {
 		t.Error("'LESS_OR_EQUAL' is expected")
 	}
+
+	openBracket := string(OPERATOR_OPEN_BRACKET)
+	if openBracket != "OPEN_BRACKET" {
+		t.Error("'OPEN_BRACKET' is expected")
+	}
+
+	closeBracket := string(OPERATOR_CLOSE_BRACKET)
+	if closeBracket != "CLOSE_BRACKET" {
+		t.Error("'CLOSE_BRACKET' is expected")
+	}
 }
 
 func TestVarTypeConstant(t *testing.T) {

@@ -19,6 +19,8 @@ const (
 	OPERATOR_LESS              OperatorValue = "LESS"
 	OPERATOR_MORETHAN_OR_EQUAL OperatorValue = "MORETHAN_OR_EQUAL"
 	OPERATOR_LESS_OR_EQUAL     OperatorValue = "LESS_OR_EQUAL"
+	OPERATOR_OPEN_BRACKET      OperatorValue = "OPEN_BRACKET"
+	OPERATOR_CLOSE_BRACKET     OperatorValue = "CLOSE_BRACKET"
 )
 
 const (

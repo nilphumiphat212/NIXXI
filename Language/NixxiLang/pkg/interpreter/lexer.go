@@ -61,6 +61,10 @@ func isOperator(text string) (bool, OperatorValue) {
 		return true, OPERATOR_MORETHAN_OR_EQUAL
 	} else if text == "<=" {
 		return true, OPERATOR_LESS_OR_EQUAL
+	} else if text == "(" {
+		return true, OPERATOR_OPEN_BRACKET
+	} else if text == ")" {
+		return true, OPERATOR_CLOSE_BRACKET
 	}
 	return false, OPERATOR_UNKNOW
 }
