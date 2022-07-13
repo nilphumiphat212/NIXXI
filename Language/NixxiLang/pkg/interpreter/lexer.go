@@ -77,6 +77,8 @@ func isKeyword(text string) (bool, Keyword) {
 		string(KEYWORD_ELSE),
 		string(KEYWORD_ELSEIF),
 		string(KEYWORD_LOOP),
+		string(KEYWORD_BREAK),
+		string(KEYWORD_RETURN),
 	}
 
 	for _, keyword := range allKeywords {

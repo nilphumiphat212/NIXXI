@@ -2,7 +2,7 @@ package interpreter
 
 type TokenType string
 type TokenValue string
-type VarType int
+type VarType int8
 type OperatorValue string
 type Keyword string
 
@@ -40,6 +40,9 @@ const (
 	KEYWORD_ELSE   Keyword = "else"
 	KEYWORD_ELSEIF Keyword = "elif"
 	KEYWORD_LOOP   Keyword = "loop"
+	KEYWORD_BREAK  Keyword = "break"
+	KEYWORD_RETURN Keyword = "return"
+	// KEYWORD_USE    Keyword = "use"
 	// KEYWORD_CLASS      Keyword = "class"
 	// KEYWORD_INTERFACE  Keyword = "interface"
 	// KEYWORD_IMPLEMENTS Keyword = "implements"

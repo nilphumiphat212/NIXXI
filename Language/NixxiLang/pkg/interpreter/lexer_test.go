@@ -149,6 +149,16 @@ func TestIsKeywordCanfilterWithString(t *testing.T) {
 	if !isLoop || loopKeyword != KEYWORD_LOOP {
 		t.Error("Can not filter 'loop' keyword")
 	}
+
+	isBreak, breakKeyword := isKeyword("break")
+	if !isBreak || breakKeyword != KEYWORD_BREAK {
+		t.Error("Can not filter 'break' keyword")
+	}
+
+	isReturn, returnKeyword := isKeyword("return")
+	if !isReturn || returnKeyword != KEYWORD_RETURN {
+		t.Error("Can not filter 'return' keyword")
+	}
 }
 
 func TestIsBoolean(t *testing.T) {

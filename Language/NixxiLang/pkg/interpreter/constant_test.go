@@ -136,6 +136,16 @@ func TestKeywordConstant(t *testing.T) {
 	if string(loopKeyword) != "loop" {
 		t.Error("'loop' is expected of loop keyword")
 	}
+
+	breakKeyword := KEYWORD_BREAK
+	if string(breakKeyword) != "break" {
+		t.Error("'break' is expected of break keyword")
+	}
+
+	returnKeyword := KEYWORD_RETURN
+	if string(returnKeyword) != "return" {
+		t.Error("'return' is expected of return keyword")
+	}
 }
 
 func TestTokenConstant(t *testing.T) {
