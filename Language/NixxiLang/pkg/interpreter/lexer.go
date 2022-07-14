@@ -149,8 +149,8 @@ func convertTextLineToTokan(textLine string) ([]Token, error) {
 	return tokens, nil
 }
 
-func LoadToLexerFromFile(filePath string) ([]Token, error) {
-	var tokens []Token
+func LoadToLexerFromFile(filePath string) ([][]Token, error) {
+	var tokens [][]Token
 
 	file, err := os.Open(filePath)
 
@@ -167,7 +167,7 @@ func LoadToLexerFromFile(filePath string) ([]Token, error) {
 		if err != nil {
 			return nil, err
 		}
-		tokens = append(tokens, tokenAppend...)
+		tokens = append(tokens, tokenAppend)
 	}
 
 	return tokens, nil

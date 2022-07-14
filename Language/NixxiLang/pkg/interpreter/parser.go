@@ -1,7 +1,9 @@
 package interpreter
 
-import "fmt"
+type ExpressionNode struct {
+	Type TokenType
+}
 
 func Parser() {
-	fmt.Println("test")
+
 }
